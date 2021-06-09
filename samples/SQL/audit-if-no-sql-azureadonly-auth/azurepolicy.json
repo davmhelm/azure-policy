@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "displayName": "Audit If no AAD-only Auth",
+        "description": "Audit If AAD-only Auth is not configured on this server",
+        "parameters": {
+           
+        },
+        "policyRule": {
+            "if": {
+                "field": "type",
+                "equals": "Microsoft.SQL/servers"
+            },
+            "then": {
+                "effect": "auditIfNotExists",
+                "details": {
+                    "type": "Microsoft.SQL/servers/azureADOnlyAuthentications"
+                }
+            }
+        }
+    }
+}
