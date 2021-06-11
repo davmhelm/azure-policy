@@ -1,6 +1,12 @@
-# Audit SQL Database is Zone Redundant
+# Audit If AAD-only Auth is not configured
 
-Audit if SQL databases are not configured to be zone redundant
+Audit If AAD-only Auth is not configured on this server
+
+| :warning: Public Preview           |
+|:---------------------------|
+| This policy sample relies on a feature of Azure SQL Database that is in public preview as of 8th June 2021. **No warranties or SLA are implied, use at your own risk.**      |
+
+https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-azure-ad-only-authentication
 
 ## Try on Portal
 
