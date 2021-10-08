@@ -67,7 +67,7 @@ Previously, this repository was the official channel to open requests for new al
 If you have questions you haven't been able to answer from the [**Azure Policy documentation**](https://docs.microsoft.com/azure/governance/policy), there are a few places that host discussions on Azure Policy:
 
  - [Microsoft Tech Community](https://techcommunity.microsoft.com/) [**Azure Governance conversation space**](https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance)
- - Join the Customer Call on Azure Governance (register [here](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxn7UD7lweFDnmuLj72r6E1UN1dLNTBZUVMyNVpHUjJLRE5PVDVGNlkyOC4u)) Latest Customer call (Sep 3rd) recording can be found [here](https://youtu.be/ONKn9XMPZCs)
+ - Join the Customer Call on Azure Governance (register [here](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxn7UD7lweFDnmuLj72r6E1UN1dLNTBZUVMyNVpHUjJLRE5PVDVGNlkyOC4u)) Latest Customer call (August 26th) slides can be found [here](https://microsoft-my.sharepoint.com/:p:/p/kenieva/Ee_ydh4fnQBKiJI7u1Kv1foBDEPI6BUBUSmOKZSUXKubRA)
  - Search old [**issues in this repo**](https://github.com/Azure/azure-policy/issues)
  - Search or add to Azure Policy discussions on [**StackOverflow**](https://stackoverflow.com/questions/tagged/azure-policy+or+azure+policy)
 
@@ -113,8 +113,10 @@ Currently, there is no plan to change this behavior for the above Microsoft.Web 
 - Microsoft.Sql 'master' database 
    - This type behaves similarly to Microsoft.Sql/servers/auditingSettings. Compliance of some fields cannot be determined except in `AuditIfNotExists` and `DeployIfNotExists` policies.
 - Microsoft.Compute/virtualMachines/instanceView
+  - Collection query of this type is missing many properties, which means compliance checks may not work.
+- Microsoft.Network/virtualNetworks/subnets
+  - The routeTable property of this type is populated differently when queried than when created or updated unless non-standard parameters are provided. This means deny policies will work, but compliance audits will generally not be correct.
 
-The potential for fixing these resource types is still under investigation.
 
 ### Resource Type not correctly published by resource provider
 
@@ -196,6 +198,7 @@ In a few instances, when creating a resource from Azure Portal, the property is 
 - Microsoft.Compute/virtualMachines/storageProfile.osDisk.diskSizeGB
 - Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.diskSizeGB
 - Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.diskSizeGB
+- Microsoft.Authorization/roleAssignmentScheduleInstances/* (all aliases)
 
 Using this type of alias in the existence condition of auditIfNotExists or deployIfNotExists policies works correctly. These two kinds of effects will get the full resource content to evaluate the existence condition. The property is always present in GET request payloads.
 
@@ -237,5 +240,14 @@ As of February 2021, index resources that don't support tags aren't applicable t
 
 May 2020: Microsoft.DocumentDB/databaseAccounts/ipRangeFilter updated from a string property to an array.  Please re-author your custom definitions to support the property as an array.  
 July 2020: The alias Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[] and related policies were deprecated. 
+
+### Resources that exceed current Azure policy assignment delete latencies
+
+Microsoft.KeyVault.Data: a deleted policy assignment can take up to 24 hours to stop being enforced. 
+Mitigation: update the policy assignment's effect to 'Disabled'.
+
+### Microsoft.Kubernetes.Data policies that evaluate containers do not currently support container exclusions.  
+
+Some containers are currently marked as non-compliant without ability to modify, such as Istio init containers. This is because some containers like Istio are loaded as side cars, which thus prevents annotation from being set ahead of time. As a solution for this scenario, we are working on updating policy definitions that target RP mode Microsoft.Kubernetes.Data with an 'excludedContainers' parameter to exclude containers in the constraint template and Azure Policy definition by Fall 2021.
 
 *This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.*

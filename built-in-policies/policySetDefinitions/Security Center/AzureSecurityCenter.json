@@ -4,7 +4,7 @@
     "policyType": "BuiltIn",
     "description": "The Azure Security Benchmark initiative represents the policies and controls implementing security recommendations defined in Azure Security Benchmark v2, see https://aka.ms/azsecbm. This also serves as the Azure Security Center default policy initiative. You can directly assign this initiative, or manage its policies and compliance results within Azure Security Center.",
     "metadata": {
-      "version": "29.1.0",
+      "version": "32.0.0",
       "category": "Security Center"
     },
     "policyDefinitionGroups": [
@@ -436,7 +436,7 @@
       },
       "windowsGuestConfigBaselinesMonitoringEffect": {
         "type": "string",
-        "defaultValue": "Disabled",
+        "defaultValue": "AuditIfNotExists",
         "allowedValues": [
           "AuditIfNotExists",
           "Disabled"
@@ -448,7 +448,7 @@
       },
       "linuxGuestConfigBaselinesMonitoringEffect": {
         "type": "string",
-        "defaultValue": "Disabled",
+        "defaultValue": "AuditIfNotExists",
         "allowedValues": [
           "AuditIfNotExists",
           "Disabled"
@@ -538,7 +538,7 @@
           "Disabled"
         ],
         "metadata": {
-          "displayName": "Disk encryption should be applied on virtual machines",
+          "displayName": "Virtual machines should encrypt temp disks, caches, and data flows between Compute and Storage resources",
           "description": "Enable or disable the monitoring for VM disk encryption"
         }
       },
@@ -941,6 +941,26 @@
         "defaultValue": "1",
         "metadata": {
           "displayName": "Required retention (in days) of logs in Key Vault vaults",
+          "description": "The required resource logs retention period in days"
+        }
+      },
+      "diagnosticsLogsInKubernetesMonitoringEffect": {
+        "type": "string",
+        "defaultValue": "AuditIfNotExists",
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "metadata": {
+          "displayName": "Resource logs in Azure Kubernetes Service should be enabled",
+          "description": "Enable or disable the monitoring of resource logs in Kubernetes managed clusters. Enabling Azure Kubernetes Service's resource logs can help recreate activity trails when investigating future security incidents"
+        }
+      },
+      "diagnosticsLogsInKubernetesRetentionDays": {
+        "type": "string",
+        "defaultValue": "1",
+        "metadata": {
+          "displayName": "Required retention (in days) of logs in Kubernetes managed clusters",
           "description": "The required resource logs retention period in days"
         }
       },
@@ -2711,6 +2731,101 @@
           "description": "List of Kubernetes namespaces to exclude from evaluation of memory and CPU limits in Kubernetes clusters. To list multiple namespaces, use semicolons (;) to separate them."
         }
       },
+      "BlockVulnerableImagesInKubernetesClusterEffect": {
+        "type": "string",
+        "defaultValue": "Audit",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "metadata": {
+          "displayName": "Kubernetes clusters should gate deployment of vulnerable images",
+          "description": "Enable or disable gating containers' with vulnerable images in Kubernetes clusters"
+        }
+      },
+      "BlockVulnerableImagesInKubernetesClusterNamespaceExclusion": {
+        "type": "Array",
+        "defaultValue": [
+          "kube-system",
+          "gatekeeper-system",
+          "azure-arc"
+        ],
+        "metadata": {
+          "displayName": "Kubernetes namespaces to exclude from monitoring of containers with vulnerable images",
+          "description": "List of Kubernetes namespaces to exclude from evaluation of block vulnerable images in Kubernetes clusters. To list multiple namespaces, use semicolons (;) to separate them."
+        }
+      },
+      "BlockVulnerableImagesNamespaces": {
+        "type": "Array",
+        "defaultValue": [],
+        "metadata": {
+          "displayName": "Namespace inclusions",
+          "description": "List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces."
+        }
+      },
+      "BlockVulnerableImagesExcludedImages": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Excluded images regex",
+          "description": "A list of RegEx rules used to exclude container images from policy evaluation. For example: exclude all images from the repo azure-defender-in-cluster-defense-repo in the blockreg ACR -  [\"(blockreg.azurecr.io/azure-defender-in-cluster-defense-repo).*\"]. Use an empty list to apply this policy to all container images."
+        },
+        "defaultValue": []
+      },
+      "BlockVulnerableImagesSeverityThresholdForExcludingNotPatchableFindings": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Severity threshold for excluding vulnerabilities without a patch",
+          "description": "Specify the maximum severity for exempting vulnerabilities without a patch. For example, specify Medium to ignore Low and Medium vulnerabilities without a patch."
+        },
+        "allowedValues": [
+          "None",
+          "Low",
+          "Medium",
+          "High"
+        ],
+        "defaultValue": "None"
+      },
+      "BlockVulnerableImagesExcludeFindingIDs": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Exclude findings Ids",
+          "description": "A list of finding IDs that the policy should exempt."
+        },
+        "defaultValue": []
+      },
+      "severity": {
+        "type": "Object",
+        "metadata": {
+          "displayName": "Severity threshold",
+          "description": "The number of allowed findings per severity for an image. e.g. \"{\"High\":0,\"Medium\":3,\"Low\":10}\""
+        },
+        "defaultValue": {
+          "High": 0,
+          "Medium": 0,
+          "Low": 0
+        },
+        "schema": {
+          "type": "object",
+          "properties": {
+            "High": {
+              "type": "integer"
+            },
+            "Medium": {
+              "type": "integer"
+            },
+            "Low": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "High",
+            "Medium",
+            "Low"
+          ],
+          "additionalProperties": false
+        }
+      },
       "MustRunAsNonRootNamespaceExclusion": {
         "type": "Array",
         "defaultValue": [
@@ -2746,6 +2861,18 @@
         "metadata": {
           "displayName": "Azure Arc enabled Kubernetes clusters should have Azure Defender's extension installed",
           "description": "Enable or disable the monitoring of Arc enabled Kubernetes clusters without Azure Defender's extension installed"
+        }
+      },
+      "azureKubernetesServiceClustersShouldHaveSecurityProfileEnabled": {
+        "type": "string",
+        "defaultValue": "Audit",
+        "allowedValues": [
+          "Audit",
+          "Disabled"
+        ],
+        "metadata": {
+          "displayName": "Azure Kubernetes Service clusters should have Azure Defender profile enabled",
+          "description": "Enable or disable the monitoring of Azure Kubernetes Service clusters without Azure Defender's profile enabled"
         }
       },
       "containerRegistryVulnerabilityAssessmentEffect": {
@@ -3624,14 +3751,14 @@
       },
       "windowsWebServersShouldBeConfiguredToUseSecureCommunicationProtocolsIncludeArcMachines": {
         "type": "string",
-        "defaultValue": "false",
+        "defaultValue": "true",
         "allowedValues": [
           "true",
           "false"
         ],
         "metadata": {
           "displayName": "Include Arc connected servers",
-          "description": "By selecting this option, you agree to be charged monthly per Arc connected machine."
+          "description": "By selecting this option, you choose to include Arc connected servers in the scope of this policy."
         }
       },
       "windowsWebServersShouldBeConfiguredToUseSecureCommunicationProtocolsMinimumTLSVersion": {
@@ -3907,6 +4034,30 @@
           "displayName": "Guest Attestation extension should be installed on supported Windows virtual machines scale sets",
           "description": "Install Guest Attestation extension on supported virtual machines scale sets to allow Azure Security Center to proactively attest and monitor the boot integrity. Once installed, boot integrity will be attested via Remote Attestation. This assessment only applies to trusted launch enabled virtual machine scale sets."
         }
+      },
+      "installEndpointProtectionMonitoringEffect": {
+        "type": "string",
+        "defaultValue": "AuditIfNotExists",
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "metadata": {
+          "displayName": "Endpoint protection should be installed on your machines",
+          "description": "To protect your machines from threats and vulnerabilities, install a supported endpoint protection solution."
+        }
+      },
+      "endpointProtectionHealthIssuesMonitoringEffect": {
+        "type": "string",
+        "defaultValue": "AuditIfNotExists",
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "metadata": {
+          "displayName": "Endpoint protection health issues should be resolved on your machines",
+          "description": "Resolve endpoint protection health issues on your virtual machines to protect them from latest threats and vulnerabilities. Azure Security Center supported endpoint protection solutions are documented here - https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions. Endpoint protection assessment is documented here - https://docs.microsoft.com/azure/security-center/security-center-endpoint-protection."
+        }
       }
     },
     "policyDefinitions": [
@@ -4068,6 +4219,9 @@
           "effect": {
             "value": "[parameters('windowsDefenderExploitGuardMonitoringEffect')]"
           },
+          "IncludeArcMachines": {
+            "value": "[parameters('windowsWebServersShouldBeConfiguredToUseSecureCommunicationProtocolsIncludeArcMachines')]"
+          },
           "NotAvailableMachineState": {
             "value": "Compliant"
           }
@@ -4082,6 +4236,9 @@
         "parameters": {
           "effect": {
             "value": "[parameters('windowsGuestConfigBaselinesMonitoringEffect')]"
+          },
+          "IncludeArcMachines": {
+            "value": "[parameters('windowsWebServersShouldBeConfiguredToUseSecureCommunicationProtocolsIncludeArcMachines')]"
           }
         },
         "groupNames": [
@@ -4094,6 +4251,9 @@
         "parameters": {
           "effect": {
             "value": "[parameters('linuxGuestConfigBaselinesMonitoringEffect')]"
+          },
+          "IncludeArcMachines": {
+            "value": "[parameters('windowsWebServersShouldBeConfiguredToUseSecureCommunicationProtocolsIncludeArcMachines')]"
           }
         },
         "groupNames": [
@@ -5256,6 +5416,36 @@
         ]
       },
       {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/13cd7ae3-5bc0-4ac4-a62d-4f7c120b9759",
+        "policyDefinitionReferenceId": "BlockVulnerableImagesInKubernetesCluster",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('BlockVulnerableImagesInKubernetesClusterEffect')]"
+          },
+          "excludedNamespaces": {
+            "value": "[parameters('BlockVulnerableImagesInKubernetesClusterNamespaceExclusion')]"
+          },
+          "namespaces": {
+            "value": "[parameters('BlockVulnerableImagesNamespaces')]"
+          },
+          "excludedImages": {
+            "value": "[parameters('BlockVulnerableImagesExcludedImages')]"
+          },
+          "severityThresholdForExcludingNotPatchableFindings": {
+            "value": "[parameters('BlockVulnerableImagesSeverityThresholdForExcludingNotPatchableFindings')]"
+          },
+          "excludeFindingIDs": {
+            "value": "[parameters('BlockVulnerableImagesExcludeFindingIDs')]"
+          },
+          "severity": {
+            "value": "[parameters('severity')]"
+          }
+        },
+        "groupNames": [
+          "Azure_Security_Benchmark_v2.0_PV-2"
+        ]
+      },
+      {
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e345eecc-fa47-480f-9e88-67dcc122b164",
         "policyDefinitionReferenceId": "memoryAndCPULimitsInKubernetesCluster",
         "parameters": {
@@ -5349,6 +5539,18 @@
         "groupNames": [
           "Azure_Security_Benchmark_v2.0_LT-1",
           "Azure_Security_Benchmark_v2.0_LT-2"
+        ]
+      },
+	  {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a1840de2-8088-4ea8-b153-b4c723e9cb01",
+        "policyDefinitionReferenceId": "azureKubernetesServiceClustersShouldHaveSecurityProfileEnabled",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('azureKubernetesServiceClustersShouldHaveSecurityProfileEnabled')]"
+          }
+        },
+        "groupNames": [
+          "Azure_Security_Benchmark_v2.0_LT-5"
         ]
       },
       {
@@ -6271,6 +6473,9 @@
         "parameters": {
           "effect": {
             "value": "[parameters('authenticationToLinuxMachinesShouldRequireSSHKeysMonitoringEffect')]"
+          },
+          "IncludeArcMachines": {
+            "value": "[parameters('windowsWebServersShouldBeConfiguredToUseSecureCommunicationProtocolsIncludeArcMachines')]"
           }
         },
         "groupNames": [
@@ -6553,6 +6758,47 @@
         },
         "groupNames": [
           "Azure_Security_Benchmark_v2.0_PV-3"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f7c564c-0a90-4d44-b7e1-9d456cffaee8",
+        "policyDefinitionReferenceId": "installEndpointProtection",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('installEndpointProtectionMonitoringEffect')]"
+          }
+        },
+        "groupNames": [
+          "Azure_Security_Benchmark_v2.0_ES-2",
+          "Azure_Security_Benchmark_v2.0_ES-3"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8e42c1f2-a2ab-49bc-994a-12bcd0dc4ac2",
+        "policyDefinitionReferenceId": "endpointProtectionHealthIssuesMonitoringEffect",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('endpointProtectionHealthIssuesMonitoringEffect')]"
+          }
+        },
+        "groupNames": [
+          "Azure_Security_Benchmark_v2.0_ES-2",
+          "Azure_Security_Benchmark_v2.0_ES-3"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/245fc9df-fa96-4414-9a0b-3738c2f7341c",
+        "policyDefinitionReferenceId": "diagnosticsLogsInKubernetesMonitoring",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('diagnosticsLogsInKubernetesMonitoringEffect')]"
+          },
+          "requiredRetentionDays": {
+            "value": "[parameters('diagnosticsLogsInKubernetesRetentionDays')]"
+          }
+        },
+        "groupNames": [
+          "Azure_Security_Benchmark_v2.0_LT-4"
         ]
       }
     ]
