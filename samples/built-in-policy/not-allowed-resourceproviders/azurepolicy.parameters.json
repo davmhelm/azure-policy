@@ -1,0 +1,9 @@
+{
+	"listOfResourceProvidersNotAllowed": {
+		"type": "Array",
+		"metadata": {
+			"description": "The list of resource providers/types that cannot be deployed. Format should follow '<Resource Provider Namespace>/*' or '<Resource Provider Namespace>/<Resource Type>'",
+			"displayName": "Not allowed resource providers"
+		}
+	}
+}

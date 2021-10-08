@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "displayName": "Not allowed resource providers",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "This policy enables you to specify the resource providers that your organization cannot deploy.",
+    "parameters": {
+      "listOfResourceProvidersNotAllowed": {
+        "type": "Array",
+        "metadata": {
+          "description": "The list of resource providers/types that cannot be deployed. Format should follow '<Resource Provider Namespace>/*' or '<Resource Provider Namespace>/<Resource Type>'",
+          "displayName": "Not allowed resource providers"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "count": {
+          "value": "[parameters('listOfResourceProvidersNotAllowed')]",
+          "name": "resourceProviderNotAllowed",
+          "where": {
+            "field": "type",
+            "like": "[current('resourceProviderNotAllowed')]"
+          }
+        },
+        "notEquals": 0
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+	"if": {
+		"count": {
+			"value": "[parameters('listOfResourceProvidersNotAllowed')]",
+			"name": "resourceProviderNotAllowed",
+			"where": {
+				"field": "type",
+				"like": "[current('resourceProviderNotAllowed')]"
+			}
+		},
+		"notEquals": 0
+	},
+    "then": {
+		"effect": "Deny"
+    }
+}
