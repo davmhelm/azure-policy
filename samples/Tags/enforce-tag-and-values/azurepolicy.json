@@ -1,0 +1,35 @@
+{
+   "properties": {
+      "displayName": "Require tag and its value",
+      "policyType": "Custom",
+      "mode": "Indexed",
+      "description": "Require tag exists, and its value is permitted. Does not apply to resource groups.",
+      "parameters": {
+         "tagName": {
+            "type": "String",
+            "metadata": {
+               "description": "Name of the tag, such as costCenter"
+            }
+         },
+         "tagAllowedValues": {
+            "type": "Array",
+            "metadata": {
+               "description": "List of permitted values of the tag, such as ['headquarters','branch1','branch2']"
+            }
+         }
+      },
+      "policyRule": {
+         "if": {
+            "not": {
+               "field": "[concat('tags[', parameters('tagName'), ']')]",
+               "in": "[parameters('tagAllowedValues')]"
+            }
+         },
+         "then": {
+            "effect": "deny"
+         }
+      }
+   },
+   "type": "Microsoft.Authorization/policyDefinitions",
+   "name": "1e30110a-5ceb-460c-a204-c1c3969c6d62"
+}

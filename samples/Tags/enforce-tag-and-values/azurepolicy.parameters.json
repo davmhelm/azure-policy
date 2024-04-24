@@ -1,0 +1,29 @@
+{
+	"tagName": {
+		"type": "String",
+		"metadata": {
+			"description": "Name of the tag, such as costCenter",
+			"displayName": "Tag Name"
+		}
+	},
+	"tagAllowedValues": {
+		"type": "Array",
+		"metadata": {
+			"description": "List of permitted values of the tag, such as ['headquarters','branch1','branch2']",
+			"displayName": "Tag Values"
+		}
+	},
+	"policyEffect": {
+		"type": "String",
+		"metadata": {
+			"description": "The desired effect for the policy: Disabled (no effect), Audit (notify only), or Deny",
+			"displayName": "Policy Effect"
+		},
+		"allowedValues": [
+			"disabled",
+			"audit",
+			"deny"
+		],
+		"defaultValue": "deny"
+	}
+}
