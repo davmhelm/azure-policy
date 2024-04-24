@@ -1,0 +1,15 @@
+{
+    "policySetEffect": {
+        "type": "String",
+        "metadata": {
+            "description": "The desired effect for the policies in this initiative: Disabled (no effect), Audit (notify only), or Deny",
+            "displayName": "Initiative Effect"
+        },
+        "allowedValues": [
+            "disabled",
+            "audit",
+            "deny"
+        ],
+        "defaultValue": "deny"
+    }
+}

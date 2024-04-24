@@ -1,0 +1,29 @@
+policy_def_id = "/subscriptions/{YOUR_SUBSCRIPTION_ID}/providers/Microsoft.Authorization/policyDefinitions/enforce-tag-values-custom"
+
+required_tags = [ 
+    {
+        tagName = "environment"
+        tagValues = [ 
+            "production",
+            "development",
+            "qa"
+        ]
+    },
+    {
+        tagName = "costcenter"
+        tagValues = [
+            "corporate",
+            "branch1",
+            "branch2"
+        ]
+    },
+    {
+        tagName = "tag1"
+        tagValues = [ 
+            "value1",
+            "value2",
+            "value3",
+            "value4"
+        ]
+    }
+]
