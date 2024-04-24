@@ -4,7 +4,7 @@ Specify cost Center tag and product name tag
 
 ## Try on Portal
 
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/getpolicy)
 
 ## Try with PowerShell
 

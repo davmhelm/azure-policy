@@ -10,7 +10,7 @@ https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-azure-a
 
 ## Try on Portal
 
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdavmhelm%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-if-no-sql-azureadonly-auth%2Fazurepolicy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdavmhelm%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-if-no-sql-azureadonly-auth%2Fazurepolicy.json)
 
 ## Try with PowerShell
 
