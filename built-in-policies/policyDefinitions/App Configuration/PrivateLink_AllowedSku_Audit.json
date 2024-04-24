@@ -6,6 +6,7 @@
       "version": "1.0.0",
       "category": "App Configuration"
     },
+    "version": "1.0.0",
     "policyType": "BuiltIn",
     "mode": "Indexed",
     "parameters": {
@@ -39,7 +40,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/89c8a434-18f0-402c-8147-630a8dea54e0",
   "name": "89c8a434-18f0-402c-8147-630a8dea54e0"

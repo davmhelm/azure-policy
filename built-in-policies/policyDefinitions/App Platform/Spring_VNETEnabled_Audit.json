@@ -5,9 +5,10 @@
     "mode": "Indexed",
     "description": "Azure Spring Cloud instances should use virtual network injection for the following purposes: 1. Isolate Azure Spring Cloud from Internet. 2. Enable Azure Spring Cloud to interact with systems in either on premises data centers or Azure service in other virtual networks. 3. Empower customers to control inbound and outbound network communications for Azure Spring Cloud.",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.2.0",
       "category": "App Platform"
     },
+    "version": "1.2.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -29,10 +30,12 @@
           "description": "List of Azure Spring Cloud SKUs against which this policy will be evaluated."
         },
         "allowedValues": [
-          "Standard"
+          "Standard",
+          "Enterprise"
         ],
         "defaultValue": [
-          "Standard"
+          "Standard",
+          "Enterprise"
         ]
       }
     },
@@ -56,7 +59,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.2.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/af35e2a4-ef96-44e7-a9ae-853dd97032c4",
   "name": "af35e2a4-ef96-44e7-a9ae-853dd97032c4"

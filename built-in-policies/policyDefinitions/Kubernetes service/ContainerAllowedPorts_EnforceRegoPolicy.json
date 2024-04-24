@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "Ensure containers listen only on allowed ports in AKS",
+    "displayName": "[Deprecated]: Ensure containers listen only on allowed ports in AKS",
     "policyType": "BuiltIn",
     "mode": "Microsoft.ContainerService.Data",
     "description": "This policy enforces containers to listen only on allowed ports in an Azure Kubernetes Service cluster. This policy is deprecated, please visit https://aka.ms/kubepolicydoc for instructions on using new Kubernetes policies.",
@@ -9,6 +9,7 @@
       "category": "Kubernetes service",
       "deprecated": true
     },
+    "version": "1.0.1",
     "parameters": {
       "allowedContainerPortsRegex": {
         "type": "String",
@@ -45,7 +46,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/0f636243-1b1c-4d50-880f-310f6199f2cb",
   "name": "0f636243-1b1c-4d50-880f-310f6199f2cb"

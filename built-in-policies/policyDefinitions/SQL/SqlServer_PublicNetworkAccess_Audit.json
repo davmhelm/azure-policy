@@ -8,6 +8,7 @@
       "version": "1.1.0",
       "category": "SQL"
     },
+    "version": "1.1.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -39,7 +40,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.1.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/1b8ca024-1d5c-4dec-8995-b1a932b41780",
   "name": "1b8ca024-1d5c-4dec-8995-b1a932b41780"

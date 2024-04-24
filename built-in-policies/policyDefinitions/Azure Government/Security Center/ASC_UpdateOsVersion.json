@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "Operating system version should be the most current version for your cloud service roles",
+    "displayName": "[Deprecated]: Operating system version should be the most current version for your cloud service roles",
     "policyType": "BuiltIn",
     "mode": "All",
     "description": "Keeping the operating system (OS) on the most recent supported version for your cloud service roles enhances the systems security posture.",
@@ -9,6 +9,7 @@
       "category": "Security Center",
       "deprecated": true
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -27,8 +28,8 @@
       "if": {
         "field": "type",
         "in": [
-          "Microsoft.ClassicCompute/domainNames/slots/roles"       
-		]
+          "Microsoft.ClassicCompute/domainNames/slots/roles"
+        ]
       },
       "then": {
         "effect": "[parameters('effect')]",
@@ -44,7 +45,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/5a913c68-0590-402c-a531-e57e19379da3",
   "name": "5a913c68-0590-402c-a531-e57e19379da3"

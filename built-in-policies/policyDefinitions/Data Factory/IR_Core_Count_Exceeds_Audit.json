@@ -5,10 +5,10 @@
     "mode": "All",
     "description": "To manage your resources and costs, limit the number of cores for an integration runtime.",
     "metadata": {
-      "version": "1.0.0-preview",
-      "category": "Data Factory",
-      "preview": true
+      "version": "1.0.0",
+      "category": "Data Factory"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -56,7 +56,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/85bb39b5-2f66-49f8-9306-77da3ac5130f",
   "name": "85bb39b5-2f66-49f8-9306-77da3ac5130f"

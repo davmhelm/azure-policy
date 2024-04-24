@@ -5,15 +5,17 @@
     "mode": "Indexed",
     "description": "Disable the public network access property to improve security and ensure your Azure Database for MariaDB can only be accessed from a private endpoint. This configuration strictly disables access from any public address space outside of Azure IP range, and denies all logins that match IP or virtual network-based firewall rules.",
     "metadata": {
-      "version": "1.0.2",
+      "version": "2.0.0",
       "category": "SQL"
     },
+    "version": "2.0.0",
     "parameters": {
       "effect": {
         "type": "string",
         "defaultValue": "Audit",
         "allowedValues": [
           "Audit",
+          "Deny",
           "Disabled"
         ],
         "metadata": {
@@ -38,7 +40,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "2.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/fdccbe47-f3e3-4213-ad5d-ea459b2fa077",
   "name": "fdccbe47-f3e3-4213-ad5d-ea459b2fa077"

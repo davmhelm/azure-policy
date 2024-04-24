@@ -5,9 +5,10 @@
     "mode": "Indexed",
     "description": "Disabling public network access improves security by ensuring that IoT Hub device provisioning service instance isn't exposed on the public internet. Creating private endpoints can limit exposure of the IoT Hub device provisioning instances. Learn more at: https://aka.ms/iotdpsvnet.",
     "metadata": {
-        "version": "1.0.0",
-        "category": "Internet of Things"
+      "version": "1.0.0",
+      "category": "Internet of Things"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -39,7 +40,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/d82101f3-f3ce-4fc5-8708-4c09f4009546",
   "name": "d82101f3-f3ce-4fc5-8708-4c09f4009546"

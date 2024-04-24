@@ -5,9 +5,10 @@
     "policyType": "BuiltIn",
     "mode": "Indexed",
     "metadata": {
-      "version": "1.0.1",
+      "version": "2.0.0",
       "category": "Network"
     },
+    "version": "2.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -33,13 +34,20 @@
           {
             "field": "Microsoft.Network/applicationGateways/webApplicationFirewallConfiguration",
             "exists": "false"
+          },
+          {
+            "field": "Microsoft.Network/applicationGateways/firewallPolicy",
+            "exists": "false"
           }
         ]
       },
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "2.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/564feb30-bf6a-4854-b4bb-0d2d2d1e6c66",
   "name": "564feb30-bf6a-4854-b4bb-0d2d2d1e6c66"

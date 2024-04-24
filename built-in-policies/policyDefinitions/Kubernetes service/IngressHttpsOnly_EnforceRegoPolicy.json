@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "Enforce HTTPS ingress in AKS",
+    "displayName": "[Deprecated]: Enforce HTTPS ingress in AKS",
     "policyType": "BuiltIn",
     "mode": "Microsoft.ContainerService.Data",
     "description": "This policy enforces HTTPS ingress in an Azure Kubernetes Service cluster. This policy is deprecated, please visit https://aka.ms/kubepolicydoc for instructions on using new Kubernetes policies.",
@@ -9,6 +9,7 @@
       "category": "Kubernetes service",
       "deprecated": true
     },
+    "version": "1.0.1",
     "parameters": {
       "effect": {
         "type": "String",
@@ -35,7 +36,10 @@
           "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/ingress-https-only/limited-preview/gatekeeperpolicy.rego"
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/2fbff515-eecc-4b7e-9b63-fcc7138b7dc3",
   "name": "2fbff515-eecc-4b7e-9b63-fcc7138b7dc3"

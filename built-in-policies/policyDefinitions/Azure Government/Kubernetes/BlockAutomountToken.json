@@ -5,34 +5,48 @@
     "mode": "Microsoft.Kubernetes.Data",
     "description": "Disable automounting API credentials to prevent a potentially compromised Pod resource to run API commands against Kubernetes clusters. For more information, see https://aka.ms/kubepolicydoc.",
     "metadata": {
-      "version": "2.0.1-preview",
-      "category": "Kubernetes",
-      "preview": true
+      "version": "5.1.0",
+      "category": "Kubernetes"
     },
+    "version": "5.1.0",
     "parameters": {
       "effect": {
         "type": "String",
         "metadata": {
           "displayName": "Effect",
-          "description": "'audit' allows a non-compliant resource to be created or updated, but flags it as non-compliant. 'deny' blocks the non-compliant resource creation or update. 'disabled' turns off the policy."
+          "description": "'Audit' allows a non-compliant resource to be created or updated, but flags it as non-compliant. 'Deny' blocks the non-compliant resource creation or update. 'Disabled' turns off the policy.",
+          "portalReview": true
         },
         "allowedValues": [
           "audit",
+          "Audit",
           "deny",
-          "disabled"
+          "Deny",
+          "disabled",
+          "Disabled"
         ],
-        "defaultValue": "audit"
+        "defaultValue": "Audit"
+      },
+      "excludedImages": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Image exclusions",
+          "description": "The list of InitContainers and Containers to exclude from policy evaluation. The identifier is the image of container. Prefix-matching can be signified with `*`. For example: `myregistry.azurecr.io/istio:*`. It is recommended that users use the fully-qualified Docker image name (e.g. start with a domain name) in order to avoid unexpectedly exempting images from an untrusted repository.",
+          "portalReview": true
+        },
+        "defaultValue": []
       },
       "excludedNamespaces": {
         "type": "Array",
         "metadata": {
           "displayName": "Namespace exclusions",
-          "description": "List of Kubernetes namespaces to exclude from policy evaluation."
+          "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design. \"azure-extensions-usage-system\" is optional to remove."
         },
         "defaultValue": [
           "kube-system",
           "gatekeeper-system",
-          "azure-arc"
+          "azure-arc",
+          "azure-extensions-usage-system"
         ]
       },
       "namespaces": {
@@ -107,20 +121,35 @@
       "if": {
         "field": "type",
         "in": [
+          "Microsoft.Kubernetes/connectedClusters",
           "Microsoft.ContainerService/managedClusters"
         ]
       },
       "then": {
         "effect": "[parameters('effect')]",
         "details": {
-          "constraintTemplate": "https://store.policy.azure.us/kubernetes/block-automount-token/v1/template.yaml",
-          "constraint": "https://store.policy.azure.us/kubernetes/block-automount-token/v1/constraint.yaml",
+          "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.azure.us/kubernetes/block-automount-token/v2/template.yaml"
+          },
+          "apiGroups": [
+            ""
+          ],
+          "kinds": [
+            "Pod"
+          ],
           "excludedNamespaces": "[parameters('excludedNamespaces')]",
           "namespaces": "[parameters('namespaces')]",
-          "labelSelector": "[parameters('labelSelector')]"
+          "labelSelector": "[parameters('labelSelector')]",
+          "values": {
+            "excludedImages": "[parameters('excludedImages')]"
+          }
         }
       }
-    }
+    },
+    "versions": [
+      "5.1.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/423dd1ba-798e-40e4-9c4d-b6902674b423",
   "name": "423dd1ba-798e-40e4-9c4d-b6902674b423"

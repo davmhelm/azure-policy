@@ -8,6 +8,7 @@
       "version": "1.0.0",
       "category": "Event Grid"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -39,8 +40,11 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
-    "id": "/providers/Microsoft.Authorization/policyDefinitions/8bfadddb-ee1c-4639-8911-a38cb8e0b3bd",
-    "name": "8bfadddb-ee1c-4639-8911-a38cb8e0b3bd"
+  "id": "/providers/Microsoft.Authorization/policyDefinitions/8bfadddb-ee1c-4639-8911-a38cb8e0b3bd",
+  "name": "8bfadddb-ee1c-4639-8911-a38cb8e0b3bd"
 }

@@ -8,6 +8,7 @@
       "version": "1.0.0",
       "category": "Network"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -37,21 +38,24 @@
     },
     "policyRule": {
       "if": {
-          "allOf": [
-              {
-                "field": "type",
-                "equals": "Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies"
-              },
-              {
-                "field": "Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/policySettings.mode",
-                "notEquals": "[parameters('modeRequirement')]"
-              }
-            ]
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies"
+          },
+          {
+            "field": "Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/policySettings.mode",
+            "notEquals": "[parameters('modeRequirement')]"
+          }
+        ]
       },
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/12430be1-6cc8-4527-a9a8-e3d38f250096",
   "name": "12430be1-6cc8-4527-a9a8-e3d38f250096"

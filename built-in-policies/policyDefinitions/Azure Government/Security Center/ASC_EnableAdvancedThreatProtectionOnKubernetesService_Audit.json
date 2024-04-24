@@ -1,13 +1,15 @@
 {
   "properties": {
-    "displayName": "Azure Defender for Kubernetes should be enabled",
+    "displayName": "[Deprecated]: Azure Defender for Kubernetes should be enabled",
     "policyType": "BuiltIn",
     "mode": "All",
     "description": "Azure Defender for Kubernetes provides real-time threat protection for containerized environments and generates alerts for suspicious activities.",
     "metadata": {
-      "version": "1.0.0",
-      "category": "Security Center"
+      "version": "1.0.0-deprecated",
+      "category": "Security Center",
+      "deprecated": true
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -39,7 +41,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/523b5cd1-3e23-492f-a539-13118b6d1e3a",
   "name": "523b5cd1-3e23-492f-a539-13118b6d1e3a"

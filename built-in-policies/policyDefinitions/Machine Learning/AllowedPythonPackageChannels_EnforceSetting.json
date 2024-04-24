@@ -1,14 +1,15 @@
 {
   "properties": {
-    "displayName": "Configure allowed Python packages for specified Azure Machine Learning computes",
+    "displayName": "[Preview]: Configure allowed Python packages for specified Azure Machine Learning computes",
     "policyType": "BuiltIn",
     "mode": "Microsoft.MachineLearningServices.Data",
     "description": "Provide allowed Python packages in specified Azure Machine Learning computes and can be assigned at the workspace. For more information, visit https://aka.ms/amlpolicydoc.",
     "metadata": {
-      "version": "3.0.0-preview",
+      "version": "5.4.0-preview",
       "category": "Machine Learning",
       "preview": true
     },
+    "version": "5.4.0-preview",
     "parameters": {
       "computeNames": {
         "type": "Array",
@@ -26,6 +27,11 @@
         },
         "allowedValues": [
           "MachineLearningCompute",
+          "SynapseSpark",
+          "ComputeInstance",
+          "ManagedEndpoint",
+          "Singularity",
+          "Automatic",
           "Any"
         ],
         "defaultValue": "Any"
@@ -48,6 +54,14 @@
         "metadata": {
           "displayName": "Allowed Python package indexes",
           "description": "List of allowed Python package indexes. Ex. http://somepythonindex.org "
+        },
+        "defaultValue": []
+      },
+      "tags": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tags applied to compute",
+          "description": "Assign a list of tags to match with the tags provided with the compute in the job. The policy is applied only if all tags match {e.g. [ \"tagKey:tagValue\", ... ]"
         },
         "defaultValue": []
       },
@@ -118,6 +132,32 @@
                 "notEquals": "MachineLearningCompute"
               }
             ]
+          },
+          {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "value": "[length(parameters('tags'))]",
+                    "notEquals": 0
+                  },
+                  {
+                    "value": "[length(field('Microsoft.MachineLearningServices.Data/workspaces/tags[*]'))]",
+                    "equals": 0
+                  }
+                ]
+              },
+              {
+                "count": {
+                  "field": "Microsoft.MachineLearningServices.Data/workspaces/tags[*]",
+                  "where": {
+                    "field": "Microsoft.MachineLearningServices.Data/workspaces/tags[*]",
+                    "in": "[parameters('tags')]"
+                  }
+                },
+                "equals": "[length(parameters('tags'))]"
+              }
+            ]
           }
         ]
       },
@@ -130,7 +170,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "5.4.0-PREVIEW"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/77eeea86-7e81-4a7d-9067-de844d096752",
   "name": "77eeea86-7e81-4a7d-9067-de844d096752"

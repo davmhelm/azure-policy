@@ -5,9 +5,10 @@
     "mode": "Indexed",
     "description": "Deploys the diagnostic settings for Service Bus to stream to a regional Log Analytics workspace when any Service Bus which is missing this diagnostic settings is created or updated.",
     "metadata": {
-      "version": "2.0.0",
+      "version": "2.1.0",
       "category": "Monitoring"
     },
+    "version": "2.1.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -143,6 +144,14 @@
                         {
                           "category": "VNetAndIPFilteringLogs",
                           "enabled": "[parameters('logsEnabled')]"
+                        },
+                        {
+                          "category": "RuntimeAuditLogs",
+                          "enabled": "[parameters('logsEnabled')]"
+                        },
+                        {
+                          "category": "ApplicationMetricsLogs",
+                          "enabled": "[parameters('logsEnabled')]"
                         }
                       ]
                     }
@@ -174,7 +183,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "2.1.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/04d53d87-841c-4f23-8a5b-21564380b55e",
   "name": "04d53d87-841c-4f23-8a5b-21564380b55e"

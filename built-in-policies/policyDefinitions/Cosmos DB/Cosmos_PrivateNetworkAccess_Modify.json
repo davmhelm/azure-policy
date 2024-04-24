@@ -1,25 +1,26 @@
 {
   "properties": {
-    "displayName": "Configure CosmosDB accounts to disable public network access ",
+    "displayName": "Configure CosmosDB accounts to disable public network access",
     "policyType": "BuiltIn",
     "mode": "Indexed",
     "description": "Disable public network access for your CosmosDB resource so that it's not accessible over the public internet. This can reduce data leakage risks. Learn more at: https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints#blocking-public-network-access-during-account-creation.",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "Cosmos DB"
     },
+    "version": "1.0.1",
     "parameters": {
-    "effect": {
-      "type": "String",
-      "metadata": {
-        "displayName": "Effect",
-        "description": "Enable or disable the execution of the policy"
-      },
-      "allowedValues": [
-        "Modify",
-        "Disabled"
-      ],
-      "defaultValue": "Modify"
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify"
       }
     },
     "policyRule": {
@@ -53,7 +54,10 @@
           ]
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/da69ba51-aaf1-41e5-8651-607cd0b37088",
   "name": "da69ba51-aaf1-41e5-8651-607cd0b37088"

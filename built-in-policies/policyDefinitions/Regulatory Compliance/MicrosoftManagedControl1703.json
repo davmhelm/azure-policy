@@ -1,13 +1,14 @@
 {
   "properties": {
-    "displayName": "Microsoft Managed Control 1703 - Security Alerts, Advisories, And Directives",
+    "displayName": "Microsoft Managed Control 1703 - Security Alerts & Advisories",
     "policyType": "Static",
     "description": "Microsoft implements this System and Information Integrity control",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "Regulatory Compliance",
       "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/ACF1703"
     },
+    "version": "1.0.1",
     "policyRule": {
       "if": {
         "allOf": [
@@ -27,7 +28,10 @@
       "then": {
         "effect": "audit"
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/804faf7d-b687-40f7-9f74-79e28adf4205",
   "name": "804faf7d-b687-40f7-9f74-79e28adf4205"

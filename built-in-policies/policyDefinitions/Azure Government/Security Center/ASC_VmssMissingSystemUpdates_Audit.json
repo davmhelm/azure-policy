@@ -8,6 +8,7 @@
       "version": "3.0.0",
       "category": "Security Center"
     },
+    "version": "3.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -41,7 +42,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "3.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/c3f317a7-a95c-4547-b7e7-11017ebdf2fe",
   "name": "c3f317a7-a95c-4547-b7e7-11017ebdf2fe"

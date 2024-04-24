@@ -5,9 +5,10 @@
     "mode": "All",
     "description": "The standard pricing tier enables threat detection for networks and virtual machines, providing threat intelligence, anomaly detection, and behavior analytics in Azure Security Center",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "Security Center"
     },
+    "version": "1.1.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -30,6 +31,10 @@
             "equals": "Microsoft.Security/pricings"
           },
           {
+            "field": "Microsoft.Security/pricings/deprecated",
+            "exists": "false"
+          },
+          {
             "field": "Microsoft.Security/pricings/pricingTier",
             "exists": "true"
           },
@@ -42,7 +47,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.1.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/a1181c5f-672a-477a-979a-7d58aa086233",
   "name": "a1181c5f-672a-477a-979a-7d58aa086233"

@@ -1,13 +1,14 @@
 {
   "properties": {
-    "displayName": "Microsoft Managed Control 1710 - Security Function Verification",
+    "displayName": "Microsoft Managed Control 1710 - Security Functionality Verification",
     "policyType": "Static",
     "description": "Microsoft implements this System and Information Integrity control",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "Regulatory Compliance",
       "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/ACF1710"
     },
+    "version": "1.0.1",
     "policyRule": {
       "if": {
         "allOf": [
@@ -27,7 +28,10 @@
       "then": {
         "effect": "audit"
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/af2a93c8-e6dd-4c94-acdd-4a2eedfc478e",
   "name": "af2a93c8-e6dd-4c94-acdd-4a2eedfc478e"

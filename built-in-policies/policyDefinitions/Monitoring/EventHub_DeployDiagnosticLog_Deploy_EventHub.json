@@ -8,6 +8,7 @@
       "version": "2.1.0",
       "category": "Monitoring"
     },
+    "version": "2.1.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -218,7 +219,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "2.1.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/ef7b61ef-b8e4-4c91-8e78-6946c6b0023f",
   "name": "ef7b61ef-b8e4-4c91-8e78-6946c6b0023f"

@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "Container Registry should use a virtual network service endpoint",
+    "displayName": "[Preview]: Container Registry should use a virtual network service endpoint",
     "policyType": "BuiltIn",
     "mode": "Indexed",
     "description": "This policy audits any Container Registry not configured to use a virtual network service endpoint.",
@@ -9,6 +9,7 @@
       "category": "Network",
       "preview": true
     },
+    "version": "1.0.0-preview",
     "parameters": {
       "effect": {
         "type": "string",
@@ -47,7 +48,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0-PREVIEW"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/c4857be7-912a-4c75-87e6-e30292bcdf78",
   "name": "c4857be7-912a-4c75-87e6-e30292bcdf78"

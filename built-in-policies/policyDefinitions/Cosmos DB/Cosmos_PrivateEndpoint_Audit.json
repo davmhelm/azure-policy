@@ -8,6 +8,7 @@
       "version": "1.0.0",
       "category": "Cosmos DB"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -44,7 +45,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/58440f8a-10c5-4151-bdce-dfbaad4a20b7",
   "name": "58440f8a-10c5-4151-bdce-dfbaad4a20b7"

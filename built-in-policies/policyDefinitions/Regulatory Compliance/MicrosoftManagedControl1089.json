@@ -1,13 +1,14 @@
 {
   "properties": {
-    "displayName": "Microsoft Managed Control 1089 - Security Awareness Training",
+    "displayName": "Microsoft Managed Control 1089 - Security Awareness",
     "policyType": "Static",
     "description": "Microsoft implements this Awareness and Training control",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "Regulatory Compliance",
       "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/ACF1089"
     },
+    "version": "1.0.1",
     "policyRule": {
       "if": {
         "allOf": [
@@ -27,7 +28,10 @@
       "then": {
         "effect": "audit"
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/ef080e67-0d1a-4f76-a0c5-fb9b0358485e",
   "name": "ef080e67-0d1a-4f76-a0c5-fb9b0358485e"

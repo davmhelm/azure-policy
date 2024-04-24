@@ -5,9 +5,10 @@
     "mode": "All",
     "description": "Firewall rules should be defined on your Azure Cosmos DB accounts to prevent traffic from unauthorized sources. Accounts that have at least one IP rule defined with the virtual network filter enabled are deemed compliant. Accounts disabling public access are also deemed compliant.",
     "metadata": {
-        "version": "2.0.0",
-        "category": "Cosmos DB"
+      "version": "2.0.0",
+      "category": "Cosmos DB"
     },
+    "version": "2.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -55,7 +56,7 @@
             ]
           },
           {
-            "allOf":[
+            "allOf": [
               {
                 "anyOf": [
                   {
@@ -89,7 +90,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "2.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb",
   "name": "862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb"

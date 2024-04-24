@@ -8,6 +8,7 @@
       "version": "1.0.0",
       "category": "Network"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -104,7 +105,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/50b83b09-03da-41c1-b656-c293c914862b",
   "name": "50b83b09-03da-41c1-b656-c293c914862b"

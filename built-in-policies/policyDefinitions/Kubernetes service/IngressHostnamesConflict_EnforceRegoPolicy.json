@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "Enforce unique ingress hostnames across namespaces in AKS",
+    "displayName": "[Deprecated]: Enforce unique ingress hostnames across namespaces in AKS",
     "policyType": "BuiltIn",
     "mode": "Microsoft.ContainerService.Data",
     "description": "This policy enforces unique ingress hostnames across namespaces in an Azure Kubernetes Service cluster. This policy is deprecated, please visit https://aka.ms/kubepolicydoc for instructions on using new Kubernetes policies.",
@@ -9,6 +9,7 @@
       "category": "Kubernetes service",
       "deprecated": true
     },
+    "version": "1.0.1",
     "parameters": {
       "effect": {
         "type": "String",
@@ -35,7 +36,10 @@
           "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/ingress-hostnames-conflict/limited-preview/gatekeeperpolicy.rego"
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/d011d9f7-ba32-4005-b727-b3d09371ca60",
   "name": "d011d9f7-ba32-4005-b727-b3d09371ca60"

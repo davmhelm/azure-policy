@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "[Deprecated]: Audit Web Sockets state for an API App",
+    "displayName": "[Deprecated]: [Deprecated]: Audit Web Sockets state for an API App",
     "policyType": "BuiltIn",
     "mode": "All",
     "description": "The Web Sockets protocol is vulnerable to different types of security threats. Use of Web Sockets within an API app must be carefully reviewed.",
@@ -9,6 +9,7 @@
       "category": "Security Center",
       "deprecated": true
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -58,7 +59,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/b48334a4-911b-4084-b1ab-3e6a4e50b951",
   "name": "b48334a4-911b-4084-b1ab-3e6a4e50b951"

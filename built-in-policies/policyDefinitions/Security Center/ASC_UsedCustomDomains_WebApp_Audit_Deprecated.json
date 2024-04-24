@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "[Deprecated]: Audit Web Applications that are not using custom domains",
+    "displayName": "[Deprecated]: [Deprecated]: Audit Web Applications that are not using custom domains",
     "policyType": "BuiltIn",
     "mode": "All",
     "description": "Use of custom domains protects a web application from common attacks such as phishing and other DNS-related attacks.",
@@ -9,6 +9,7 @@
       "category": "Security Center",
       "deprecated": true
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -66,7 +67,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/dd2ea520-6b06-45c3-806e-ea297c23e06a",
   "name": "dd2ea520-6b06-45c3-806e-ea297c23e06a"

@@ -8,6 +8,7 @@
       "version": "1.0.0",
       "category": "SQL"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -33,7 +34,10 @@
           "type": "Microsoft.Sql/servers/administrators"
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9",
   "name": "1f314764-cb73-4fc9-b863-8eca98ac36e9"

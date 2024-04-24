@@ -1,13 +1,14 @@
 {
   "properties": {
-    "displayName": "Microsoft Managed Control 1068 - Wireless Access",
+    "displayName": "Microsoft Managed Control 1068 - Wireless Access Restrictions",
     "policyType": "Static",
     "description": "Microsoft implements this Access Control control",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "Regulatory Compliance",
       "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/ACF1068"
     },
+    "version": "1.0.1",
     "policyRule": {
       "if": {
         "allOf": [
@@ -27,7 +28,10 @@
       "then": {
         "effect": "audit"
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/2d045bca-a0fd-452e-9f41-4ec33769717c",
   "name": "2d045bca-a0fd-452e-9f41-4ec33769717c"

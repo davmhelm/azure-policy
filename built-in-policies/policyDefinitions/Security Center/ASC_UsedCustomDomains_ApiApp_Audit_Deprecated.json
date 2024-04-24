@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "[Deprecated]: Audit API Apps that are not using custom domains",
+    "displayName": "[Deprecated]: [Deprecated]: Audit API Apps that are not using custom domains",
     "policyType": "BuiltIn",
     "mode": "All",
     "description": "Use of custom domains protects a API app from common attacks such as phishing and other DNS-related attacks.",
@@ -9,6 +9,7 @@
       "category": "Security Center",
       "deprecated": true
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -58,7 +59,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/224da9fe-0d38-4e79-adb3-0a6e2af942ac",
   "name": "224da9fe-0d38-4e79-adb3-0a6e2af942ac"

@@ -8,6 +8,7 @@
       "version": "1.0.0",
       "category": "Network"
     },
+    "version": "1.0.0",
     "parameters": {},
     "policyRule": {
       "if": {
@@ -27,7 +28,10 @@
       "then": {
         "effect": "deny"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/83a86a26-fd1f-447c-b59d-e51f44264114",
   "name": "83a86a26-fd1f-447c-b59d-e51f44264114"

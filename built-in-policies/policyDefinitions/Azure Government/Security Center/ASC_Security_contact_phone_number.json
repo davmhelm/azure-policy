@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "A security contact phone number should be provided for your subscription",
+    "displayName": "[Deprecated]: A security contact phone number should be provided for your subscription",
     "policyType": "BuiltIn",
     "mode": "All",
     "description": "Enter a phone number to receive notifications when Azure Security Center detects compromised resources - This policy is deprecated because phone numbers are no longer used in any scenario by Azure Security Center",
@@ -9,6 +9,7 @@
       "category": "Security Center",
       "deprecated": true
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -38,7 +39,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/b4d66858-c922-44e3-9566-5cdb7a7be744",
   "name": "b4d66858-c922-44e3-9566-5cdb7a7be744"

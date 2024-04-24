@@ -1,13 +1,14 @@
 {
   "properties": {
-    "displayName": "Microsoft Managed Control 1143 - Security Assessment And Authorization Policy And Procedures",
+    "displayName": "Microsoft Managed Control 1143 - Certification, Authorization, Security Assessment Policy And Procedures",
     "policyType": "Static",
     "description": "Microsoft implements this Security Assessment and Authorization control",
     "metadata": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "Regulatory Compliance",
       "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/ACF1143"
     },
+    "version": "1.0.1",
     "policyRule": {
       "if": {
         "allOf": [
@@ -27,7 +28,10 @@
       "then": {
         "effect": "audit"
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/7c6de11b-5f51-4f7c-8d83-d2467c8a816e",
   "name": "7c6de11b-5f51-4f7c-8d83-d2467c8a816e"

@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "[Deprecated]: Audit API Applications that are not using latest supported PHP Framework",
+    "displayName": "[Deprecated]: [Deprecated]: Audit API Applications that are not using latest supported PHP Framework",
     "policyType": "BuiltIn",
     "mode": "All",
     "description": "Use the latest supported PHP version for the latest security classes. Using older classes and types can make your application vulnerable.",
@@ -9,6 +9,7 @@
       "category": "Security Center",
       "deprecated": true
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "string",
@@ -58,7 +59,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/3fe37002-5d00-4b37-a301-da09e3a0ca66",
   "name": "3fe37002-5d00-4b37-a301-da09e3a0ca66"

@@ -1,6 +1,6 @@
 {
   "properties": {
-    "displayName": "Email notifications to admins should be enabled in SQL Managed Instance advanced data security settings",
+    "displayName": "[Deprecated]: Email notifications to admins should be enabled in SQL Managed Instance advanced data security settings",
     "policyType": "BuiltIn",
     "mode": "Indexed",
     "description": "Audit that 'email notification to admins and subscription owners' is enabled in SQL Managed Instance advanced threat protection settings. This setting ensures that any detections of anomalous activities on SQL Managed Instance are reported as soon as possible to the admins.",
@@ -9,6 +9,7 @@
       "category": "SQL",
       "deprecated": true
     },
+    "version": "1.0.1",
     "parameters": {
       "effect": {
         "type": "String",
@@ -39,7 +40,10 @@
           }
         }
       }
-    }
+    },
+    "versions": [
+      "1.0.1"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/aeb23562-188d-47cb-80b8-551f16ef9fff",
   "name": "aeb23562-188d-47cb-80b8-551f16ef9fff"

@@ -8,6 +8,7 @@
       "version": "1.0.0",
       "category": "Storage"
     },
+    "version": "1.0.0",
     "parameters": {
       "effect": {
         "type": "String",
@@ -39,7 +40,10 @@
       "then": {
         "effect": "[parameters('effect')]"
       }
-    }
+    },
+    "versions": [
+      "1.0.0"
+    ]
   },
   "id": "/providers/Microsoft.Authorization/policyDefinitions/b5ec538c-daa0-4006-8596-35468b9148e8",
   "name": "b5ec538c-daa0-4006-8596-35468b9148e8"
